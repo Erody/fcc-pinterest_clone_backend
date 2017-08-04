@@ -11,7 +11,18 @@ const imageSchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
-	}
+	},
+	likes: {
+		type: Number,
+	},
+	dislikes: {
+		type: Number,
+	},
+	owner: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'User',
+		required: 'Image has to have a User associated with it.'
+	},
 });
 
 

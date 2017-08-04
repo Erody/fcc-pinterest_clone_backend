@@ -3,7 +3,8 @@ import { getImages } from '../controllers/pictures';
 
 const router = express.Router();
 
-//GET
-router.get('/', getImages);
+//POST
+router.post('/', getImages);
+
 
 export default router;
