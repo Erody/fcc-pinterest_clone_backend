@@ -31,7 +31,6 @@ export async function localSignup(req, res) {
 				passwordDigest: bcrypt.hashSync(password, 10)
 			});
 			await newUser.save();
-			req.login(newUser);
 			res.json(newUser);
 		}
 	}
@@ -39,7 +38,6 @@ export async function localSignup(req, res) {
 }
 
 export function logout(req, res) {
-	console.log(req.user);
 	req.logout();
-	console.log(req.user);
+	res.json({});
 }
