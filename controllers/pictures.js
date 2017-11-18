@@ -3,8 +3,10 @@ import mongoose from 'mongoose';
 const User = mongoose.model('User');
 const Image = mongoose.model('Image');
 
-export function getImages (req, res) {
-	res.json(mockData);
+export async function getImages (req, res) {
+	const filter = req.body;
+	const images = await Image.find(filter);
+	res.json(images);
 }
 
 export async function addImage (req, res) {
