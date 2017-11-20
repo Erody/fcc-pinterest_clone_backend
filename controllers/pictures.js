@@ -27,3 +27,17 @@ export async function addImage (req, res) {
 		})
 		.catch(err => res.status(500).json({errors: {global: 'Oops, something went wrong on our end.'}}));
 }
+
+export async function voteOnImage (req, res) {
+	const {id, vote} = req.body;
+	// todo - check if user already voted on this image
+		// todo - if he has, remove his vote
+		// todo - if he hasn't, add his vote
+	if(vote === 'like') {
+		const image = await Image.findOneAndUpdate({_id: id}, {$inc: { likes: 1}}, {new: true});
+		res.json({image});
+	} else if (vote === 'dislike') {
+		const image = await Image.findOneAndUpdate({_id: id}, {$inc: { dislikes: 1}}, {new: true});
+		res.json({image});
+	}
+}
