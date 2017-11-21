@@ -24,6 +24,12 @@ const imageSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now()
 	},
+	votes: [
+		{
+			voteType: String,
+			voter: { type: mongoose.Schema.ObjectId, ref: 'User'}
+		}
+	],
 	owner: {
 		type: mongoose.Schema.ObjectId,
 		ref: 'User',
